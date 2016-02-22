@@ -1,0 +1,17 @@
+commit bcfb8f434b37863b2b91fa52b0a4ea02a6cbd278
+Author: dujar <dujar.coding@gmail.com>
+Date:   Mon Feb 22 13:32:59 2016 +0100
+
+    brands section finished with polished with minor edit for corrections of toy section
+
+commit 0cb07941d4e936af8af60bbeab60ec18ff550e58
+Author: dujar <dujar.coding@gmail.com>
+Date:   Mon Feb 22 12:14:43 2016 +0100
+
+    added the method for toy with the results in app1.rb
+
+commit 8025c16cbc80da92bb540f08f34f855f8926c3f5
+Author: dujar <dujar.coding@gmail.com>
+Date:   Sun Feb 14 16:09:34 2016 +0100
+
+    ascii art + time and working on the method

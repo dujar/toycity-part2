@@ -1,10 +1,10 @@
 require 'json'
 require 'artii'
 
-#def start
-#	set_up# load, read, parse, and create the files
-#	create_report# create the report
-#end
+def start
+	set_up# load, read, parse, and create the files
+	create_report# create the report
+end
 
 
 # Get path to products.json, read the file into a string,
@@ -24,11 +24,15 @@ puts a.asciify('Sales Report')
 
 
 # Print today's date
-def today_date
-    date = Time.new
-    date.strftime("%Y-%m-%d")
+def what_date today
+    if today=="today"
+        date = Time.new
+        date.strftime("%Y-%m-%d")
+    else
+        puts "write todayin order to get today's date"
+    end
 end
-puts today_date
+puts what_date "today"
 # Print "Products" in ascii art
 
 puts a.asciify('Products')
@@ -42,14 +46,6 @@ puts a.asciify('Products')
 	# Calculate and print the average discount (zo% or $) based off the average sales price
 
 #methods gathering information for toy
-def testing ho, options ={}
-    if options[:hi]
-        puts options[:hi]
-    else
-        puts ho
-    end
-end
-puts testing "ho",hi:"ploen"
 
 #methods gathering information for toy
     def item_array(options = {})
