@@ -1,3 +1,9 @@
+commit a995c8585563b211b61a0a75f14a7d34ab5e10c7
+Author: dujar <dujar.coding@gmail.com>
+Date:   Mon Feb 22 14:49:14 2016 +0100
+
+    finished work with correct results, however I have long methods, I will resubmit :)
+
 commit bcfb8f434b37863b2b91fa52b0a4ea02a6cbd278
 Author: dujar <dujar.coding@gmail.com>
 Date:   Mon Feb 22 13:32:59 2016 +0100
