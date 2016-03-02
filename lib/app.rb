@@ -2,41 +2,50 @@ require 'json'
 require 'artii'
 require 'pp'
 
-def start
-	set_up# load, read, parse, and create the files
-	create_report# create the report
-end
-
-
 # Get path to products.json, read the file into a string,
-# # and transform the string into a usable hash
-def set_up
-path = File.join(File.dirname(__FILE__), '../data/products.json')
-file = File.read(path)
-$products_hash = JSON.parse(file)
-$report_file = File.new("report.txt", "w+")
-end
-set_up
-#start#call start method to trigger report generation
+#and transform the string into a usable hash
+
+  def set_up
+    path = File.join(File.dirname(__FILE__), '../data/products.json')
+    file = File.read(path)
+    $products_hash = JSON.parse(file)
+    $products = $products_hash["items"]
+    $report_file = File.new("report.txt", "w+")
+  end
+
+  def create_report
+    what_date "today"
+    artii_art "Sales Report"
+    artii_art "Products"
+    print_report_toys
+    artii_art "Brands"
+    print_report_brands
+    total_sales_outstanding
+  end
+
+  def start
+	  set_up# load, read, parse, and create the files
+	  create_report#create_report# create the report
+  end
+
 
 # Print "Sales Report" in ascii art
-a = Artii::Base.new :font => 'slant'
 # Print today's date
-puts a.asciify('Sales Report')
 
-
-def what_date today
+  def what_date today
     if today=="today"
         date = Time.new
         date.strftime("%Y-%m-%d")
     else
         puts "write todayin order to get today's date"
     end
-end
-puts what_date "today"
+  end
 # Print "Products" in ascii art
 
-puts a.asciify('Products')
+  def artii_art what
+    a = Artii::Base.new :font => 'slant'
+    puts a.asciify(what)
+  end
 
 # For each product in the data set:
 	# Print the name of the toy
@@ -45,7 +54,6 @@ puts a.asciify('Products')
 	# Calculate and print the total amount of sales
 	# Calculate and print the average price the toy sold for
 	# Calculate and print the average discount (zo% or $) based off the average sales price
-  $products = $products_hash["items"]
   def arrays_take item
     $products.select{|product| product[item]}
   end
@@ -83,19 +91,17 @@ puts a.asciify('Products')
     puts "***********************************************"
     puts "Toy's title: #{toy["title"]}"
     puts "***********************************************"
-    puts "Toy's price: #{toy["full-price"]}"
+    puts "Toy's price: $#{toy["full-price"]}"
     puts "Toy's number of purchases : #{toy["purchases"].count}"
-    puts "Toy's total sales: #{total_purchases(toy["purchases"])}"
-    puts "Toy's average price: #{average_purchase toy["purchases"]}"
-    puts "Toy's average discount: #{discount toy}"
+    puts "Toy's total sales: $#{total_purchases(toy["purchases"])}"
+    puts "Toy's average price: $#{average_purchase toy["purchases"]}"
+    puts "Toy's average discount: $#{discount toy}"
     end
   end
 
-          print_report_toys
 
 # Print "Brands" in ascii art
 
-  puts a.asciify('Brands')
 
 #methods gathering information for Brand
 	# Count and print the number of the brand's toys we stock
@@ -126,8 +132,8 @@ puts a.asciify('Products')
       puts "Brand name: #{brand[0]["brand"]}"
       puts "***********************************************"
       puts "Stock available: #{stock_available brand}"
-      puts "Brand's average retail price : #{brand_average_price brand}"
-      puts "Brand's total sales: #{total_brand_purchases(brand)}"
+      puts "Brand's average retail price : $#{brand_average_price brand}"
+      puts "Brand's total sales: $#{total_brand_purchases(brand)}"
      # puts "Toy's average discount: #{discount toy}"
       end
   end
@@ -150,7 +156,10 @@ puts a.asciify('Products')
   end
 
 
+  def total_sales_outstanding
+      puts "***********************************************"
+      puts " The total sales of all the brands combined are : $#{total_brand_purchases $products}"
+  end
 
+  start
 
-
-        print_report_brands

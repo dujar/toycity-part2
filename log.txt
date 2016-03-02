@@ -1,0 +1,35 @@
+commit 99703ee2bbfcb1310e73552a75b63a09f20a98af
+Author: dujar <dujar.coding@gmail.com>
+Date:   Wed Mar 2 15:30:07 2016 +0100
+
+    ready for submission with meta programming as well :)
+
+commit 5b2994984b77a1459b63fa5c16494b17a15ceb05
+Author: dujar <dujar.coding@gmail.com>
+Date:   Sat Feb 27 15:37:40 2016 +0100
+
+    naked project since will start from beginning
+
+commit a995c8585563b211b61a0a75f14a7d34ab5e10c7
+Author: dujar <dujar.coding@gmail.com>
+Date:   Mon Feb 22 14:49:14 2016 +0100
+
+    finished work with correct results, however I have long methods, I will resubmit :)
+
+commit bcfb8f434b37863b2b91fa52b0a4ea02a6cbd278
+Author: dujar <dujar.coding@gmail.com>
+Date:   Mon Feb 22 13:32:59 2016 +0100
+
+    brands section finished with polished with minor edit for corrections of toy section
+
+commit 0cb07941d4e936af8af60bbeab60ec18ff550e58
+Author: dujar <dujar.coding@gmail.com>
+Date:   Mon Feb 22 12:14:43 2016 +0100
+
+    added the method for toy with the results in app1.rb
+
+commit 8025c16cbc80da92bb540f08f34f855f8926c3f5
+Author: dujar <dujar.coding@gmail.com>
+Date:   Sun Feb 14 16:09:34 2016 +0100
+
+    ascii art + time and working on the method
