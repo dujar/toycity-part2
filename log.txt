@@ -1,3 +1,9 @@
+commit 4fac916e4eee79b6272e912d5100f0e3915a44aa
+Author: dujar <dujar.coding@gmail.com>
+Date:   Wed Mar 2 17:03:02 2016 +0100
+
+    corrected create_report
+
 commit 99703ee2bbfcb1310e73552a75b63a09f20a98af
 Author: dujar <dujar.coding@gmail.com>
 Date:   Wed Mar 2 15:30:07 2016 +0100
