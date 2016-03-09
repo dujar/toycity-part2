@@ -8,45 +8,45 @@ require 'pp'
   def set_up
     path = File.join(File.dirname(__FILE__), '../data/products.json')
     file = File.read(path)
-    $products_hash = JSON.parse(file)
-    $products = $products_hash["items"]
-    $report_file = File.new("report.txt", "w+")
+    products_hash = JSON.parse(file)
+    $products = products_hash["items"]
+    $report_file= File.new("report.txt", "w+")
   end
 
   def create_report
-    what_date "today"
-    artii_art "Sales Report"
-    artii_art "Products"
-    print_report_toys
-    artii_art "Brands"
-    print_report_brands
-    total_sales_outstanding
+
+   what_date("today")
+   artii_art("Sales Report")
+   artii_art("Products")
+   print_report_toys
+   artii_art("Brands")
+   print_report_brands
+   total_sales_outstanding
   end
 
   def start
 	  set_up# load, read, parse, and create the files
-	  create_report#create_report# create the report
+    create_report
+    $report_file.close
   end
 
 
-# Print "Sales Report" in ascii art
 # Print today's date
-
   def what_date today
     if today=="today"
         date = Time.new
-        date.strftime("%Y-%m-%d")
+     $report_file.puts   date.strftime("%Y-%m-%d")
     else
-        puts "write todayin order to get today's date"
+      $report_file.puts "write todayin order to get today's date"
     end
   end
-# Print "Products" in ascii art
-
+#print ascii text from artii ruby gem
   def artii_art what
     a = Artii::Base.new :font => 'slant'
-    puts a.asciify(what)
+    $report_file.puts a.asciify(what)
   end
 
+#Code for Products
 # For each product in the data set:
 	# Print the name of the toy
 	# Print the retail price of the toy
@@ -88,20 +88,18 @@ require 'pp'
   def print_report_toys
     (0..2).each do |i|
     toy = toys i
-    puts "***********************************************"
-    puts "Toy's title: #{toy["title"]}"
-    puts "***********************************************"
-    puts "Toy's price: $#{toy["full-price"]}"
-    puts "Toy's number of purchases : #{toy["purchases"].count}"
-    puts "Toy's total sales: $#{total_purchases(toy["purchases"])}"
-    puts "Toy's average price: $#{average_purchase toy["purchases"]}"
-    puts "Toy's average discount: $#{discount toy}"
+    $report_file.puts "***********************************************"
+    $report_file.puts "Toy's title: #{toy["title"]}"
+    $report_file.puts "***********************************************"
+    $report_file.puts "Toy's price: $#{toy["full-price"]}"
+    $report_file.puts "Toy's number of purchases : #{toy["purchases"].count}"
+    $report_file.puts "Toy's total sales: $#{total_purchases(toy["purchases"])}"
+    $report_file.puts "Toy's average price: $#{average_purchase toy["purchases"]}"
+    $report_file.puts "Toy's average discount: $#{discount toy}"
     end
   end
 
-
-# Print "Brands" in ascii art
-
+##code for Brand
 
 #methods gathering information for Brand
 	# Count and print the number of the brand's toys we stock
@@ -128,13 +126,13 @@ require 'pp'
   def print_report_brands
     (0..brand_numb-1).each do |i|
     brand = eval("brand#{i}")
-      puts "***********************************************"
-      puts "Brand name: #{brand[0]["brand"]}"
-      puts "***********************************************"
-      puts "Stock available: #{stock_available brand}"
-      puts "Brand's average retail price : $#{brand_average_price brand}"
-      puts "Brand's total sales: $#{total_brand_purchases(brand)}"
-     # puts "Toy's average discount: #{discount toy}"
+      $report_file.puts "***********************************************"
+      $report_file.puts "Brand name: #{brand[0]["brand"]}"
+      $report_file.puts "***********************************************"
+      $report_file.puts "Stock available: #{stock_available brand}"
+      $report_file.puts "Brand's average retail price : $#{brand_average_price brand}"
+      $report_file.puts "Brand's total sales: $#{total_brand_purchases(brand)}"
+     # $report_file.puts "Toy's average discount: #{discount toy}"
       end
   end
 
@@ -157,8 +155,8 @@ require 'pp'
 
 
   def total_sales_outstanding
-      puts "***********************************************"
-      puts " The total sales of all the brands combined are : $#{total_brand_purchases $products}"
+      $report_file.puts "***********************************************"
+      $report_file.puts " The total sales of all the brands combined are : $#{total_brand_purchases $products}"
   end
 
   start
